@@ -1,0 +1,25 @@
+{
+  "name": "apple-music-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Apple Music — search catalog, create playlists, manage library",
+  "type": "module",
+  "bin": {
+    "apple-music-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "auth": "tsx src/auth-server.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "dotenv": "^16.4.5",
+    "jose": "^5.9.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}
