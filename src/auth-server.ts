@@ -47,6 +47,16 @@ const HTML = (devToken: string) => `<!doctype html>
       status.textContent = 'Authorizing…';
       try {
         const music = MusicKit.getInstance();
+        // MusicKit persists authorization in localStorage. Without this,
+        // authorize() short-circuits and hands back the CACHED token — so a
+        // dead token stays dead no matter how many times you click, and the
+        // Apple sign-in sheet never appears. Force a real re-auth.
+        try { await music.unauthorize(); } catch (_) {}
+        try {
+          Object.keys(localStorage)
+            .filter((k) => k.startsWith('music.'))
+            .forEach((k) => localStorage.removeItem(k));
+        } catch (_) {}
         const userToken = await music.authorize();
         status.innerHTML = '<span class="ok">Got user token. Saving…</span>';
         const r = await fetch('/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ userToken }) });
