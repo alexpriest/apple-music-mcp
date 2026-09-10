@@ -4,3 +4,5 @@ dist/
 .env.local
 keys/*.p8
 *.log
+.env*
+!.env.example
