@@ -1,6 +1,14 @@
 # apple-music-mcp
 
-MCP server for the Apple Music API. Search the full catalog, create playlists, manage your library.
+An MCP server for the Apple Music API: search the catalog, build playlists, manage a library.
+
+## Status
+
+Shipped — catalog search is verified; library writes need a user token from npm run auth.
+
+## License
+
+Not licensed for reuse.
 
 ## Status
 
